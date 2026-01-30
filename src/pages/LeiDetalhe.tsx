@@ -5,8 +5,6 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Layout } from "@/components/layout/Layout";
 import { Separator } from "@/components/ui/separator";
-import { TextSuggestion } from "@/components/TextSuggestion";
-import { textosCompletosLeis } from "@/data/textosCompletos";
 
 const leisData: Record<string, {
   numero: string;
@@ -16,6 +14,7 @@ const leisData: Record<string, {
   impacto: string;
   pontos: string[];
   justificativa: string;
+  textoCompleto: string;
 }> = {
   "distritos-tributarios": {
     numero: "01",
@@ -32,6 +31,7 @@ const leisData: Record<string, {
       "Sistema de prestação de contas simplificado",
     ],
     justificativa: "Atualmente o cidadão não sabe quanto paga e quanto recebe em serviços públicos. Esta lei cria uma relação direta entre tributo e serviço, permitindo que cada comunidade decida onde investir seus recursos e cobre resultados de seus representantes.",
+    textoCompleto: "[PLACEHOLDER - Texto completo da Lei a ser inserido. Este documento está em fase de elaboração técnica e jurídica.]",
   },
   "auditoria-divida": {
     numero: "02",
@@ -48,6 +48,7 @@ const leisData: Record<string, {
       "Relatórios públicos semestrais",
     ],
     justificativa: "A dívida pública brasileira cresce sem que a população saiba exatamente quais são seus termos e condições. Esta lei estabelece mecanismos permanentes de auditoria e transparência, permitindo identificar contratos lesivos e irregularidades.",
+    textoCompleto: "[PLACEHOLDER - Texto completo da Lei a ser inserido. Este documento está em fase de elaboração técnica e jurídica.]",
   },
   "democracia-direta": {
     numero: "03",
@@ -64,6 +65,7 @@ const leisData: Record<string, {
       "Orçamento participativo obrigatório",
     ],
     justificativa: "A democracia representativa se tornou distante do cidadão. Esta lei implementa mecanismos de democracia direta que permitem às comunidades decidir sobre questões locais importantes sem depender exclusivamente de representantes eleitos.",
+    textoCompleto: "[PLACEHOLDER - Texto completo da Lei a ser inserido. Este documento está em fase de elaboração técnica e jurídica.]",
   },
 };
 
@@ -169,18 +171,11 @@ export default function LeiDetalhe() {
                   <h2 className="font-display text-xl font-bold text-foreground mb-3">
                     Texto Completo
                   </h2>
-                  <div className="bg-muted p-4 rounded-lg max-h-[600px] overflow-y-auto">
-                    <pre className="text-sm text-muted-foreground whitespace-pre-wrap font-sans leading-relaxed">
-                      {textosCompletosLeis[id || ""] || "[Texto em elaboração]"}
-                    </pre>
+                  <div className="bg-muted p-4 rounded-lg">
+                    <p className="text-muted-foreground italic">
+                      {lei.textoCompleto}
+                    </p>
                   </div>
-                  
-                  {/* Sistema de sugestões */}
-                  <TextSuggestion 
-                    documentType="lei" 
-                    documentId={id || ""} 
-                    originalText={textosCompletosLeis[id || ""] || ""} 
-                  />
                 </CardContent>
               </Card>
             </div>

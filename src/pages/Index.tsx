@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowRight, FileText, Scale, Building2, Shield, DollarSign, Lock, Users, ScrollText, Vote, ArrowLeftRight } from "lucide-react";
+import { ArrowRight, FileText, Scale, Building2, Shield, DollarSign, Lock, Users, ScrollText, Vote } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Layout } from "@/components/layout/Layout";
@@ -200,66 +200,6 @@ const Index = () => {
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
             </Link>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Comparador Destaque */}
-      <section className="py-16 bg-accent/5">
-        <div className="container mx-auto px-4 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-          >
-            <Card className="border-2 border-accent overflow-hidden">
-              <div className="grid md:grid-cols-2 gap-0">
-                <div className="p-8 md:p-12">
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center">
-                      <ArrowLeftRight className="h-6 w-6 text-accent" />
-                    </div>
-                    <span className="text-sm font-semibold text-accent uppercase tracking-wide">
-                      Ferramenta Interativa
-                    </span>
-                  </div>
-                  <h3 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-4">
-                    Brasil Atual vs. Brasil Descentralizado
-                  </h3>
-                  <p className="text-muted-foreground mb-6">
-                    Compare métricas de autonomia, tributação e justiça entre o modelo 
-                    centralizado atual e nossa proposta de Brasil descentralizado.
-                  </p>
-                  <Link to="/comparador">
-                    <Button className="bg-accent text-accent-foreground hover:bg-accent/90">
-                      Explorar Comparador
-                      <ArrowRight className="ml-2 h-4 w-4" />
-                    </Button>
-                  </Link>
-                </div>
-                <div className="bg-gradient-to-br from-accent/20 to-primary/20 p-8 md:p-12 flex items-center justify-center">
-                  <div className="grid grid-cols-2 gap-6 text-center">
-                    <div>
-                      <div className="text-4xl font-bold text-destructive">15%</div>
-                      <div className="text-sm text-muted-foreground">Autonomia Atual</div>
-                    </div>
-                    <div>
-                      <div className="text-4xl font-bold text-primary">85%</div>
-                      <div className="text-sm text-muted-foreground">Autonomia Proposta</div>
-                    </div>
-                    <div>
-                      <div className="text-4xl font-bold text-destructive">4.5 anos</div>
-                      <div className="text-sm text-muted-foreground">Tempo Processos</div>
-                    </div>
-                    <div>
-                      <div className="text-4xl font-bold text-primary">1.5 anos</div>
-                      <div className="text-sm text-muted-foreground">Com Reforma</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </Card>
           </motion.div>
         </div>
       </section>
