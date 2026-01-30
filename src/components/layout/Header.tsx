@@ -11,6 +11,7 @@ const navigation = [
   { name: "PECs", href: "/pecs" },
   { name: "Leis", href: "/leis" },
   { name: "Simulador", href: "/simulador" },
+  { name: "Comparador", href: "/comparador" },
   { name: "Participe", href: "/participe" },
 ];
 
