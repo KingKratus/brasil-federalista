@@ -1,10 +1,12 @@
 import { motion } from "framer-motion";
 import { Link, useParams } from "react-router-dom";
-import { ArrowLeft, Download, Share2, FileText, CheckCircle } from "lucide-react";
+import { ArrowLeft, Download, Share2, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Layout } from "@/components/layout/Layout";
 import { Separator } from "@/components/ui/separator";
+import { TextSuggestion } from "@/components/TextSuggestion";
+import { textosCompletosPecs } from "@/data/textosCompletos";
 
 const pecsData: Record<string, {
   numero: string;
@@ -14,7 +16,6 @@ const pecsData: Record<string, {
   impacto: string;
   pontos: string[];
   justificativa: string;
-  textoCompleto: string;
 }> = {
   "municipios-semissoberanos": {
     numero: "01",
@@ -31,7 +32,6 @@ const pecsData: Record<string, {
       "Orçamento impositivo local",
     ],
     justificativa: "O Brasil é um país de dimensões continentais com realidades extremamente diversas. Municípios no Norte têm desafios completamente diferentes de municípios no Sul. A centralização legislativa em Brasília impede que soluções locais sejam implementadas de forma ágil e adequada às necessidades de cada comunidade.",
-    textoCompleto: "[PLACEHOLDER - Texto completo da PEC a ser inserido. Este documento está em fase de elaboração técnica e jurídica.]",
   },
   "federalismo-penal": {
     numero: "02",
@@ -48,7 +48,6 @@ const pecsData: Record<string, {
       "Sistema integrado de informações criminais",
     ],
     justificativa: "O sistema penal brasileiro é excessivamente centralizado e não responde adequadamente às diferentes realidades regionais. Crimes urbanos como pichação, som alto e perturbação da ordem poderiam ser tratados de forma mais eficiente pela esfera municipal, enquanto crimes violentos mantém a competência estadual.",
-    textoCompleto: "[PLACEHOLDER - Texto completo da PEC a ser inserido. Este documento está em fase de elaboração técnica e jurídica.]",
   },
   "reforma-stf": {
     numero: "03",
@@ -65,7 +64,6 @@ const pecsData: Record<string, {
       "Criação de corte de precedentes",
     ],
     justificativa: "O STF se tornou uma corte hiperconcentrada que decide sobre praticamente qualquer matéria no país. Essa concentração gera morosidade, ativismo judicial excessivo e afasta a justiça do cidadão comum. A criação de câmaras regionais permitiria maior celeridade e adequação às realidades locais.",
-    textoCompleto: "[PLACEHOLDER - Texto completo da PEC a ser inserido. Este documento está em fase de elaboração técnica e jurídica.]",
   },
 };
 
@@ -171,11 +169,18 @@ export default function PecDetalhe() {
                   <h2 className="font-display text-xl font-bold text-foreground mb-3">
                     Texto Completo
                   </h2>
-                  <div className="bg-muted p-4 rounded-lg">
-                    <p className="text-muted-foreground italic">
-                      {pec.textoCompleto}
-                    </p>
+                  <div className="bg-muted p-4 rounded-lg max-h-[600px] overflow-y-auto">
+                    <pre className="text-sm text-muted-foreground whitespace-pre-wrap font-sans leading-relaxed">
+                      {textosCompletosPecs[id || ""] || "[Texto em elaboração]"}
+                    </pre>
                   </div>
+                  
+                  {/* Sistema de sugestões */}
+                  <TextSuggestion 
+                    documentType="pec" 
+                    documentId={id || ""} 
+                    originalText={textosCompletosPecs[id || ""] || ""} 
+                  />
                 </CardContent>
               </Card>
             </div>
